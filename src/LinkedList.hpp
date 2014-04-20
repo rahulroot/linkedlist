@@ -55,4 +55,10 @@ int listSize(NODE *head);
 /* delete a node given it's pointer and list head */
 void deletePtr(NODE *&head, NODE *ptr);
 
+/* print the list in reverse order */
+void printListInReverse(NODE *head);
+
+/* reverse the list in recursive manner */
+NODE* revList(NODE *parent, NODE *current);
+
 #endif
