@@ -40,4 +40,16 @@ void joinList(NODE *&list1, NODE *&list2);
 /* function to perform the merge sort on sorted list */
 NODE* mergeSort(NODE *&list1, NODE *&list2);
 
+/* get Nth node from the head of list */
+NODE* getNth(NODE *head, int index);
+
+/* get Nth node from the tail of list */
+NODE* getNthFromEnd(NODE *head, int index);
+
+/* get the middle node of list */
+NODE* getMiddle(NODE *head);
+
+/* return the size of list */
+int listSize(NODE *head);
+
 #endif
