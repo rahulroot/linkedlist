@@ -282,3 +282,30 @@ void deletePtr(NODE *&head, NODE *ptr)
   return;
 
 }
+
+void printListInReverse(NODE *head)
+{
+	static int cnt = 0;
+  if(!head)
+    return;
+	cnt++;
+  printListInReverse(head->next);
+  printf("%d(%d) ", head->data, cnt);
+	cnt--;
+	if (!cnt)
+		printf("\n");
+}
+
+NODE* revList(NODE *parent, NODE *current)
+{
+  NODE *revHead = NULL;
+  if ( current == NULL )
+    revHead = parent;
+  else
+  {
+    revHead = revList(current, current->next);
+    /* current become revHead, current->next will be assigned to parent */
+    current->next = parent;
+  }
+  return revHead;
+}
