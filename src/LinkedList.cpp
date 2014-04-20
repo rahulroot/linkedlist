@@ -17,12 +17,36 @@ void pushFront(NODE *&head, int data)
 	}
 }
 
+NODE* popFront(NODE *&head)
+{
+  if(!head)
+    return NULL;
+  NODE *tmp = head;
+  head = head->next;
+  return tmp;
+}
+
+
+void pushBackNode(NODE *&head, NODE *tmp)
+{
+  if(!head)
+    head = tmp;
+  else
+  {
+    NODE *cur = head;
+    while(cur->next != NULL)
+      cur = cur->next;
+    cur->next = tmp;
+  }
+  tmp->next = NULL;
+}
+
 void createList(NODE *&head, int data)
 {
 	if(!head)
 	{
 		head = getNode(data);
-	}	
+	}
 	else
 	{
 		NODE *cur = head;
@@ -89,4 +113,63 @@ void joinList(NODE *&list1, NODE *&list2)
 
 	tmp->next = list2;
 	list2 = NULL;
+}
+
+NODE* mergeSort(NODE *&list1, NODE *&list2)
+{
+  NODE *list3 = NULL;
+  NODE *tmp = NULL;
+  while(list1 && list2)
+  {
+    tmp = NULL;
+    if( list1->data <= list2->data)
+    {
+      tmp = popFront(list1);
+      pushBackNode(list3, tmp);
+    }
+    else
+    {
+      tmp = popFront(list2);
+      pushBackNode(list3, tmp);
+    }
+  }
+
+  tmp = NULL;
+  while(list1)
+  {
+    tmp = popFront(list1);
+    pushBackNode(list3, tmp);
+  }
+
+  tmp = NULL;
+  while(list2)
+  {
+    tmp = popFront(list2);
+    pushBackNode(list3, tmp);
+  }
+
+  return list3;
+}
+
+void createSortedList(NODE *&head, int data)
+{
+  if(!head)
+  {
+    head = getNode(data);
+  }
+  else if (head->data > data)
+  {
+    NODE *tmp = getNode(data);
+    tmp->next = head;
+    head = tmp;
+  }
+  else
+  {
+    NODE *cur = head;
+    while(cur->next != NULL && cur->next->data < data)
+      cur = cur->next;
+    NODE *tmp = getNode(data);
+    tmp->next = cur->next;
+    cur->next = tmp;
+  }
 }
