@@ -239,3 +239,46 @@ NODE* getMiddle(NODE *head)
   }
   return slw;
 }
+
+void deletePtr(NODE *&head, NODE *ptr)
+{
+	if (!head)  return; /* if there is no list */
+
+  if ( head == ptr) /* if list has one node or ptr point to first node in the list */
+  {
+    NODE *tmp = head->next;
+    deleteNode(head);
+    head = tmp;
+    return;
+  }
+
+  NODE *cur = head;
+  NODE *prev = head;
+  while ( cur != NULL && cur != ptr) /* search for this node pointer */
+  {
+    prev = cur;
+    cur = cur->next;
+  }
+
+  if (!cur) return; /* we didn't find the pointer in the list while traversing the list */
+
+  if ( ! cur->next ) /* ptr point to last node of the list */
+  {
+    prev->next = cur->next;
+    deleteNode(cur);
+    return;
+  }
+
+  /* any other inter-mediatory node */
+  {
+    int tmp = ptr->data;    /* swap the value of ptr with ptr->next->data */
+    ptr->data = ptr->next->data;
+    ptr->next->data = tmp;
+  }
+
+  NODE *tmp = ptr->next;
+  ptr->next = ptr->next->next;
+  deleteNode(tmp);
+  return;
+
+}

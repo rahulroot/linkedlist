@@ -52,4 +52,7 @@ NODE* getMiddle(NODE *head);
 /* return the size of list */
 int listSize(NODE *head);
 
+/* delete a node given it's pointer and list head */
+void deletePtr(NODE *&head, NODE *ptr);
+
 #endif
