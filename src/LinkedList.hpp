@@ -6,8 +6,24 @@
 /* Implementing Stack functionality using Linked list */
 void pushFront(NODE *&head, int data);
 
+/* function to remove the node from head of list
+ * head pointer moves to next node in list
+ */
+NODE* popFront(NODE *&head);
+
+/* add a tmp node at the tail of list */
+void pushBackNode(NODE *&head, NODE *tmp);
+
+/* function to create a list */
 void createList(NODE *&head, int data);
+
+/* function to create a sorted list */
+void createSortedList(NODE *&head, int data);
+
+/* function to delete the list */
 void deleteList(NODE *&head);
+
+/* function to print the list */
 void printList(NODE *head);
 
 /* This function take a list1 as initial list
@@ -20,5 +36,8 @@ void removeAltNode(NODE *&list1, NODE *&list2);
 /* join the list2 head into list1 tail to
  * create one list */
 void joinList(NODE *&list1, NODE *&list2);
+
+/* function to perform the merge sort on sorted list */
+NODE* mergeSort(NODE *&list1, NODE *&list2);
 
 #endif
