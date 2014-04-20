@@ -173,3 +173,69 @@ void createSortedList(NODE *&head, int data)
     cur->next = tmp;
   }
 }
+
+int listSize(NODE *head)
+{
+  int cnt = 0;
+  while(head != NULL)
+  {
+    head = head->next;
+    cnt++;
+  }
+  return cnt;
+}
+
+
+NODE* getNth(NODE *head, int index)
+{
+  if(index > listSize(head))
+    return NULL;
+
+  int count = 0;
+  while(head != NULL)
+  {
+    count++;
+    if(count == index)
+      return head;
+    head = head->next;
+  }
+}
+
+NODE* getNthFromEnd(NODE *head, int inx)
+{
+  NODE *slow, *fast;
+  slow = fast = head;
+  if(inx > listSize(head))
+    return NULL;
+  while(inx--)
+    fast = fast->next;
+  while(fast!=NULL)
+  {
+    fast = fast->next;
+    slow = slow->next;
+  }
+  return slow;
+}
+
+NODE* getMiddle(NODE *head)
+{
+  if(!head)
+    return NULL;
+  if(head->next == NULL)
+    return NULL;
+  if(head->next->next == NULL)
+    return head;
+
+  NODE *slw, *fst;
+  slw = fst = head;
+  while(fst!=NULL)
+  {
+    fst = fst->next;
+    if(fst)
+    {
+      fst = fst->next;
+      slw = slw->next;
+    }
+  }
+  return slw;
+}
