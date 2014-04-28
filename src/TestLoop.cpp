@@ -30,21 +30,21 @@ int main(int argc, char **argv)
     a[i] = rand()%maxnum;
   }
 
-	cout <<"Generated Number Seq..." << endl;
+  cout <<"Generated Number Seq..." << endl;
   for(int i = 0; i < maxnum; ++i)
     cout << a[i] <<" ";
 	cout << endl;
 
-	NODE *head = NULL;
+  NODE *head = NULL;
   for(int i = 0; i < maxnum; ++i)
     createList(head, a[i]);
 
   cout <<"After Creating List..." << endl;
-	printList(head);
+  printList(head);
 
-	createLoop(head, 1);
+  createLoop(head, 1);
 
-	if (isLoop(head))
+  if (isLoop(head))
     cout <<"List has loop. " << endl;
   else
     cout <<"List doesn't have any loop." << endl;
@@ -79,9 +79,8 @@ int main(int argc, char **argv)
   else
     cout <<"List doesn't have any loop." << endl;
 
-
-	cout <<"Deleting list." << endl;
-	deleteList(head);
+  cout <<"Deleting list." << endl;
+  deleteList(head);
 
   delete [] a;
   return 0;
