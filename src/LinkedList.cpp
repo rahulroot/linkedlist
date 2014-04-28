@@ -309,3 +309,40 @@ NODE* revList(NODE *parent, NODE *current)
   }
   return revHead;
 }
+
+extern NODE *lastptr;
+void createLoop(NODE *&head, int target_node)
+{
+	NODE *fast = NULL;
+	fast = head;
+
+	while(target_node--)
+		fast = fast->next;
+
+	/* find the last node in the list */
+	NODE *cur = head;
+	while(cur && cur->next)
+		cur = cur->next;
+
+	/* store the last pointer to global varible for multiple test cases */
+	lastptr = cur;
+	/* next of last pointer point to fast, which is current node */
+	cur->next = fast;
+}
+
+bool isLoop(NODE *&head)
+{
+	NODE *fast, *slow;
+	fast = slow = head;
+
+	while(slow && fast)
+	{
+		fast = fast->next;
+		if(fast)
+			fast = fast->next;
+		slow = slow->next;
+		if ( fast == slow )
+			return true;
+	}
+	return false;
+}

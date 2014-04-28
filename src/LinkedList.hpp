@@ -61,4 +61,9 @@ void printListInReverse(NODE *head);
 /* reverse the list in recursive manner */
 NODE* revList(NODE *parent, NODE *current);
 
+/* Function to detect any loop in linked list */
+bool isLoop(NODE *&head);
+
+/* this function create a loop in the list headed by head pointer, with pointer returned by target node */
+void createLoop(NODE *&head, int target_node);
 #endif
