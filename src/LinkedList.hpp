@@ -70,4 +70,9 @@ void createLoop(NODE *&head, int target_node, NODE *&lastptr);
 /* get intersaction Node for two linked list if any */
 NODE* getIntersectNode(NODE *head1, NODE *head2);
 
+/* remove the duplicate value from the sorted list */
+void RemoveDuplicateFromSortedList(NODE *&head);
+
+/* remove the duplicate from unsorted list */
+void RemoveDuplicateFromUnsortedList(NODE *&head);
 #endif
