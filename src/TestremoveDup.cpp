@@ -27,41 +27,41 @@ int main(int argc, char **argv)
     a[i] = rand()%maxnum;
   }
 
-	cout <<"Generated Number Seq..." << endl;
+  cout <<"Generated Number Seq..." << endl;
   for(int i = 0; i < maxnum; ++i)
     cout << a[i] <<" ";
-	cout << endl;
+   cout << endl;
 
-	NODE *head;
-	head = NULL;
+  NODE *head;
+  head = NULL;
 
   for(int i = 0; i < maxnum; ++i)
     createSortedList(head, a[i]);
 
   cout <<"Creating sorted list 1..." << endl;
-	printList(head);
+  printList(head);
 
-	cout <<"Removing duplicate from sorted list." << endl;
+  cout <<"Removing duplicate from sorted list." << endl;
   RemoveDuplicateFromSortedList(head);
   printList(head);
 
-	cout <<"Deleting List." << endl;
-	deleteList(head);
+  cout <<"Deleting List." << endl;
+  deleteList(head);
 
-	head = NULL;
+  head = NULL;
 	
   for(int i = 0; i < maxnum; ++i)
     createList(head, a[i]);
 
   cout <<"Creating list 1..." << endl;
-	printList(head);
+  printList(head);
 
-	cout <<"Removing duplicate from list." << endl;
+  cout <<"Removing duplicate from list." << endl;
   RemoveDuplicateFromUnsortedList(head);
   printList(head);
 
-	cout <<"Deleting List." << endl;
-	deleteList(head);
+  cout <<"Deleting List." << endl;
+  deleteList(head);
 
   /* deleting original array */
   delete [] a;
