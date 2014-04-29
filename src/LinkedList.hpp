@@ -65,5 +65,9 @@ NODE* revList(NODE *parent, NODE *current);
 bool isLoop(NODE *&head);
 
 /* this function create a loop in the list headed by head pointer, with pointer returned by target node */
-void createLoop(NODE *&head, int target_node);
+void createLoop(NODE *&head, int target_node, NODE *&lastptr);
+
+/* get intersaction Node for two linked list if any */
+NODE* getIntersectNode(NODE *head1, NODE *head2);
+
 #endif

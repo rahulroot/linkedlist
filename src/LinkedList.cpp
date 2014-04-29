@@ -310,8 +310,7 @@ NODE* revList(NODE *parent, NODE *current)
   return revHead;
 }
 
-extern NODE *lastptr;
-void createLoop(NODE *&head, int target_node)
+void createLoop(NODE *&head, int target_node, NODE *&lastptr)
 {
 	NODE *fast = NULL;
 	fast = head;
@@ -345,4 +344,35 @@ bool isLoop(NODE *&head)
 			return true;
 	}
 	return false;
+}
+
+NODE *getIntersectNode(NODE *list1, NODE *list2)
+{
+  if(!list1 || !list2)
+    return NULL;
+  int len1 = listSize(list1);
+  int len2 = listSize(list2);
+  int diff = 0;
+  if(len1 >= len2)
+  {
+    diff = len1-len2;
+    while(diff--)
+      list1 = list1->next;
+  }
+  else
+  {
+    diff = len2-len1;
+    while(diff--)
+      list2 = list2->next;
+  }
+
+  while(list1 && list2)
+  {
+    if(list1 == list2)
+      return list1;
+    list1 = list1->next;
+    list2 = list2->next;
+  }
+  return NULL;
+
 }

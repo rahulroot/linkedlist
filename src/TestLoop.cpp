@@ -6,7 +6,6 @@
 
 using namespace std;
 
-NODE *lastptr = NULL;
 
 int main(int argc, char **argv)
 {
@@ -42,7 +41,9 @@ int main(int argc, char **argv)
   cout <<"After Creating List..." << endl;
   printList(head);
 
-  createLoop(head, 1);
+  NODE *lastptr = NULL;
+
+  createLoop(head, 1, lastptr);
 
   if (isLoop(head))
     cout <<"List has loop. " << endl;
@@ -50,7 +51,7 @@ int main(int argc, char **argv)
     cout <<"List doesn't have any loop." << endl;
   lastptr->next = NULL;
 
-  createLoop(head, 3); /* count represent node number, pointed by the last node of the list */
+  createLoop(head, 3, lastptr); /* count represent node number, pointed by the last node of the list */
 
   if (isLoop(head))
     cout <<"List has loop. " << endl;
@@ -58,7 +59,7 @@ int main(int argc, char **argv)
     cout <<"List doesn't have any loop." << endl;
   lastptr->next = NULL;
 
-  createLoop(head, listSize(head)-1); /* count represent node number, pointed by the last node of the list */
+  createLoop(head, listSize(head)-1, lastptr); /* count represent node number, pointed by the last node of the list */
 
   if (isLoop(head))
     cout <<"List has loop. " << endl;
@@ -66,7 +67,7 @@ int main(int argc, char **argv)
     cout <<"List doesn't have any loop." << endl;
   lastptr->next = NULL;
 
-  createLoop(head, listSize(head)/2); /* count represent node number, pointed by the last node of the list */
+  createLoop(head, listSize(head)/2, lastptr); /* count represent node number, pointed by the last node of the list */
 
   if (isLoop(head))
     cout <<"List has loop. " << endl;
