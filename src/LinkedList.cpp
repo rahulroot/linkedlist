@@ -376,3 +376,49 @@ NODE *getIntersectNode(NODE *list1, NODE *list2)
   return NULL;
 
 }
+
+void RemoveDuplicateFromSortedList(NODE *&head)
+{
+  if (!head) return;
+
+	NODE *cur = head;
+	while(cur != NULL && cur->next != NULL)
+	{
+		if( cur->data == cur->next->data)
+		{
+			printf("Found duplicate element : %d deleted.\n", cur->next->data);
+			NODE *tmp = cur->next;
+			cur->next = cur->next->next;
+			deleteNode(tmp);
+		}
+		else
+			cur = cur->next;
+	}
+}
+
+void RemoveDuplicateFromUnsortedList(NODE *&head)
+{
+  if(!head) return;
+
+  NODE *cur1, *cur2;
+  cur1 = cur2 = head;
+
+  while(cur1)
+  {
+    cur2 = cur1;
+    while(cur2->next != NULL)
+    {
+      if(cur1->data == cur2->next->data)
+      {
+        printf("Found duplicate element : %d deleted.\n", cur2->next->data);
+        NODE *tmp = cur2->next;
+        cur2->next = cur2->next->next;
+        deleteNode(tmp);
+      }
+      else
+        cur2 = cur2->next;
+    }
+    cur1 = cur1->next;
+  }
+
+}
