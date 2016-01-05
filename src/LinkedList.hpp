@@ -75,4 +75,7 @@ void RemoveDuplicateFromSortedList(NODE *&head);
 
 /* remove the duplicate from unsorted list */
 void RemoveDuplicateFromUnsortedList(NODE *&head);
+
+/* function to remove the loop from the list */
+void removeLoop(NODE *&head);
 #endif

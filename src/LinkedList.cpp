@@ -422,3 +422,7 @@ void RemoveDuplicateFromUnsortedList(NODE *&head)
   }
 
 }
+
+void removeLoop(NODE *&head)
+{
+}
